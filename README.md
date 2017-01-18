@@ -208,6 +208,23 @@ Somoclu looks for CUDA in /usr/local/cuda. If your installation is not there, th
 
 Windows
 -------
+
+###Somoclu Library
+Make sure you have MinGW installed with autotools properly set up.
+Open up the ``msys.bat`` in ``MinGW\msys\1.0\``
+Clone into folder and run the following commands:
+
+```
+mkdir -p Tools\config
+cd ..
+autoconf -v
+configure
+autogen.sh
+make
+make install
+```
+
+###Somoclu Executable
 Use the `somoclu.sln` under `src/Windows/somoclu` as an example Visual Studio 2013 solution. Modify the CUDA version or VC compiler version according to your needs.
 
 The default solution enables all of OpenMP, MPI, and CUDA. The default MPI installation path is `C:\Program Files (x86)\Microsoft SDKs\MPI\`, modify the settings if yours is in a different path. The configuration default CUDA version is 7.5.  Disable MPI by removing `HAVE_MPI` macro in the project properties (`Properties -> Configuration Properties -> C/C++ -> Preprocessor`). Disable CUDA by removing `CUDA` macro in the solution properties and uncheck CUDA in `Project -> Custom Build Rules`. If you open the solution without CUDA installed, please remove the following sections in `somoclu.vcxproj`:
